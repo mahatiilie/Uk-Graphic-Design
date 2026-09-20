@@ -187,6 +187,9 @@ nav > a:last-child:hover {
     width: 100%;
     margin: 20px 0;
   }
+  .portfolio-grid {
+    flex-direction: column;
+  }
 }
 .about {
   padding: 100px 40px;
@@ -230,4 +233,42 @@ nav > a:last-child:hover {
 
 .about-image img {
   width: 280px;
+}
+.portfolio {
+  padding: 100px 40px;
+}
+.portfolio h2 {
+  font-size: 40px;
+  color: #1683ff;
+  margin-bottom: 15px;
+}
+.portfolio > p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.portfolio-grid {
+  display: flex;
+  gap: 20px;
+}
+.portfolio-card {
+  flex: 1;
+  background-color: #0b1422;
+  padding: 30px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.portfolio-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+.portfolio-card h3 {
+  color: #1683ff;
+  margin-top: 20px;
+}
+.portfolio-card p {
+  line-height: 1.6;
+}
+.portfolio-card:hover{
+  transform: translateY(-8px);
+  border: 1px solid #1683ff;
 }
