@@ -190,6 +190,22 @@ nav > a:last-child:hover {
   .portfolio-grid {
     flex-direction: column;
   }
+  .contact {
+    padding: 70px 20px;
+  }
+  .contact h2 {
+    font-size: 32px;
+  }
+  .contact form {
+    width: 100%;
+  }
+  .contact > p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  .contact button {
+    width: 100%;
+  }
 }
 .about {
   padding: 100px 40px;
@@ -271,4 +287,66 @@ nav > a:last-child:hover {
 .portfolio-card:hover{
   transform: translateY(-8px);
   border: 1px solid #1683ff;
+}
+.contact {
+  padding: 100px 40px;
+}
+.contact h2 {
+  font-size: 40px;
+  color: #1683ff;
+}
+.contact > p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  gap: 10px;
+  margin: 0 auto;
+}
+.contact input {
+  padding: 12px;
+  background-color: #0b1422;
+  color: #ffffff;
+  border: 1px solid #1683ff;
+  border-radius: 6px;
+  width: 100%;
+  outline: none;
+}
+.contact input:focus {
+  border: 1px solid #ffffff;
+}
+
+.contact textarea {
+  padding: 12px;
+  min-height: 150px;
+  background-color: #0b1422;
+  color: #ffffff;
+  border: 1px solid #1683ff;
+  border-radius: 6px;
+  width: 100%;
+  outline: none;
+}
+.contact textarea:focus {
+  border: 1px solid #ffffff;
+}
+.contact button {
+  padding: 12px 24px;
+  background-color: #1683ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+.contact button:hover {
+  background-color: #ffffff;
+  color: #1683ff;
+}
+.contact label {
+  font-size: 16px;
+  font-weight: 600;
 }
