@@ -213,7 +213,8 @@ nav > a:last-child:hover {
   background-color: #0b1422;
   padding: 30px;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border 0.3s ease;
+  border: 1px solid transparent;
 }
 .portfolio-card img {
   width: 100%;
@@ -245,11 +246,12 @@ nav > a:last-child:hover {
   display: flex;
   flex-direction: column;
   max-width: 600px;
-  gap: 10px;
+  gap: 15px;
   margin: 0 auto;
+
 }
 .contact input {
-  padding: 12px;
+  padding: 14px;
   background-color: #0b1422;
   color: #ffffff;
   border: 1px solid #1683ff;
@@ -262,7 +264,7 @@ nav > a:last-child:hover {
 }
 
 .contact textarea {
-  padding: 12px;
+  padding: 14px;
   min-height: 150px;
   background-color: #0b1422;
   color: #ffffff;
@@ -370,4 +372,14 @@ footer p {
   font-size: 14px;
   color: #ffffff;
 
+}
+.services h2,
+.about h2,
+.portfolio h2,
+.contact h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.about {
+  text-align: left;
 }
