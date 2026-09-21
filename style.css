@@ -77,6 +77,8 @@ body {
   background-color: #0b1422;
   border-radius: 10px;
   vertical-align: top;
+  transition: transform 0.3s ease, border 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .service-card h3 {
@@ -89,10 +91,6 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: #ffffff;
-}
-.service-card {
-  transition: transform 0.3s ease, border 0.3s ease;
-  border: 1px solid transparent;
 }
 
 .service-card:hover {
@@ -144,69 +142,7 @@ nav > a:last-child:hover {
   background-color: #ffffff;
   color: #1683ff;
 }
-@media (max-width: 768px) {
-  header {
-    padding: 20px;
-  }
 
-  nav {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 70px 20px;
-  }
-
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  .hero p {
-    font-size: 18px;
-  }
-
-  .hero img {
-    width: 220px;
-  }
-
-  .services {
-    padding: 70px 20px;
-  }
-
-  .service-card {
-    display: block;
-    width: 100%;
-    margin: 20px 0;
-  }
-  .portfolio-grid {
-    flex-direction: column;
-  }
-  .contact {
-    padding: 70px 20px;
-  }
-  .contact h2 {
-    font-size: 32px;
-  }
-  .contact form {
-    width: 100%;
-  }
-  .contact > p {
-    font-size: 16px;
-    margin-bottom: 30px;
-  }
-  .contact button {
-    width: 100%;
-  }
-}
 .about {
   padding: 100px 40px;
   display: flex;
@@ -349,4 +285,72 @@ nav > a:last-child:hover {
 .contact label {
   font-size: 16px;
   font-weight: 600;
+}
+@media (max-width: 768px) {
+  header {
+    padding: 20px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 70px 20px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .hero img {
+    width: 220px;
+  }
+
+  .services {
+    padding: 70px 20px;
+  }
+
+  .service-card {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+  }
+  .about {
+    flex-direction: column;
+    text-align: center;
+    padding: 70px 20px;
+  }
+  .portfolio-grid {
+    flex-direction: column;
+  }
+  .contact {
+    padding: 70px 20px;
+  }
+  .contact h2 {
+    font-size: 32px;
+  }
+  .contact form {
+    width: 100%;
+  }
+  .contact > p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  .contact button {
+    width: 100%;
+  }
 }
