@@ -258,6 +258,7 @@ nav > a:last-child:hover {
   border-radius: 6px;
   width: 100%;
   outline: none;
+  transition: border 0.3s ease;
 }
 .contact input:focus {
   border: 1px solid #ffffff;
@@ -272,6 +273,7 @@ nav > a:last-child:hover {
   border-radius: 6px;
   width: 100%;
   outline: none;
+  transition: border 0.3s ease;
 }
 .contact textarea:focus {
   border: 1px solid #ffffff;
@@ -289,6 +291,7 @@ nav > a:last-child:hover {
 .contact button:hover {
   background-color: #ffffff;
   color: #1683ff;
+  transform: translateY(-3px);
 }
 .contact label {
   font-size: 16px;
