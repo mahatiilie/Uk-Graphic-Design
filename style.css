@@ -58,6 +58,7 @@ body {
 .services {
   padding: 80px 40px;
   text-align: center;
+  
 }
 
 .services h2 {
@@ -71,12 +72,15 @@ body {
   color: #ffffff;
   margin-bottom: 40px;
 }
+.services-grid {
+  display: flex;
+  gap: 20px;
+}
 
 .service-card {
-  display: inline-block;
-  width: 30%;
+  flex: 1;
   padding: 30px;
-  margin: 10px;
+  margin: 0;
   background-color: #0b1422;
   border-radius: 10px;
   vertical-align: top;
@@ -155,6 +159,7 @@ nav > a:last-child:hover {
   align-items: center;
   justify-content: space-between;
   gap: 60px;
+  text-align: left;
 }
 
 .about-text {
@@ -207,6 +212,7 @@ nav > a:last-child:hover {
 .portfolio-grid {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 .portfolio-card {
   flex: 1;
@@ -250,23 +256,9 @@ nav > a:last-child:hover {
   margin: 0 auto;
 
 }
-.contact input {
-  padding: 14px;
-  background-color: #0b1422;
-  color: #ffffff;
-  border: 1px solid #1683ff;
-  border-radius: 6px;
-  width: 100%;
-  outline: none;
-  transition: border 0.3s ease;
-}
-.contact input:focus {
-  border: 1px solid #ffffff;
-}
-
+.contact input,
 .contact textarea {
   padding: 14px;
-  min-height: 150px;
   background-color: #0b1422;
   color: #ffffff;
   border: 1px solid #1683ff;
@@ -275,9 +267,12 @@ nav > a:last-child:hover {
   outline: none;
   transition: border 0.3s ease;
 }
+.contact input:focus, 
 .contact textarea:focus {
   border: 1px solid #ffffff;
 }
+
+
 .contact button {
   padding: 12px 24px;
   background-color: #1683ff;
@@ -287,6 +282,22 @@ nav > a:last-child:hover {
   cursor: pointer;
   margin-top: 10px;
   transition: 0.3s;
+}
+#whatsapp-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  margin-top: 10px;
+  background-color: #1683ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+  font-weight: 600;
+}
+#whatsapp-btn:hover {
+  background-color: #ffffff;
+  color: #1683ff;
+  transform: translateY(-3px);
 }
 .contact button:hover {
   background-color: #ffffff;
@@ -300,6 +311,7 @@ nav > a:last-child:hover {
 @media (max-width: 768px) {
   header {
     padding: 20px;
+    position: static;
   }
 
   nav {
@@ -336,6 +348,7 @@ nav > a:last-child:hover {
   }
 
   .service-card {
+    flex-direction: column;
     display: block;
     width: 100%;
     margin: 20px 0;
@@ -376,13 +389,4 @@ footer p {
   color: #ffffff;
 
 }
-.services h2,
-.about h2,
-.portfolio h2,
-.contact h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.about {
-  text-align: left;
-}
+

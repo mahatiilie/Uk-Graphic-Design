@@ -9,20 +9,20 @@ form.addEventListener("submit", function(event){
   const message = document.getElementById("message").value;
   
   if (name === "") {
-    alert("please enter your name.");
+    alert("Please enter your name.");
     return;
   }
   if (email === "") {
-    alert("please enter your email.");
+    alert("Please enter your email.");
     return;
     
   }
   if (!emailPattern.test(email)) {
-      alert("please enter a valid email address.");
+      alert("Please enter a valid email address.");
       return;
     }
   if (message === "") {
-    alert("please enter your message.");
+    alert("Please enter your message.");
     return;
   }
 
