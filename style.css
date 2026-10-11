@@ -14,46 +14,55 @@ body {
   background-color: #050b14;
 }
 .hero {
-  padding:80px 40px;
+  padding: 120px 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 80vh;
-  gap: 50px;
+  gap: 60px;
 }
+
+.hero > div {
+  max-width: 650px;
+}
+
 .hero h1 {
   font-size: 60px;
   line-height: 1.1;
   color: #1683ff;
   margin-bottom: 25px;
+  font-weight: 700;
 }
+
 .hero p {
   font-size: 20px;
   line-height: 1.6;
-  color: #ffffff;
-  margin-bottom: 10px;
+  color: #b8c4d6;
+  margin-bottom: 20px;
 }
+
 .hero a {
   display: inline-block;
   padding: 12px 24px;
   margin-top: 25px;
+  margin-right: 10px;
   text-decoration: none;
   background-color: #1683ff;
   color: #ffffff;
   border-radius: 6px;
-  margin-right: 10px;
-  transition: 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
+
 .hero a:hover {
   background-color: #ffffff;
   color: #1683ff;
+  transform: translateY(-3px);
 }
+
 .hero img {
-  width: 280px;
+  width: 320px;
   height: auto;
-}
-.hero > div {
-  max-width: 600px;
+  opacity: 0.95;
 }
 .services {
   padding: 80px 40px;
@@ -74,19 +83,20 @@ body {
 }
 .services-grid {
   display: flex;
-  gap: 20px;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto ;
+
 }
 
 .service-card {
   flex: 1;
-  padding: 30px;
-  margin: 0;
+  padding: 35px 30px;
   background-color: #0b1422;
-  border-radius: 10px;
+  border-radius: 12px;
   transition: transform 0.3s ease, border 0.3s ease;
   border: 1px solid transparent;
 }
-
 .service-card h3 {
   font-size: 24px;
   color: #1683ff;
@@ -95,10 +105,9 @@ body {
 
 .service-card p {
   font-size: 16px;
-  line-height: 1.6;
-  color: #ffffff;
+  line-height: 1.7;
+  color: #b8c4d6;
 }
-
 .service-card:hover {
   transform: translateY(-8px);
   border: 1px solid #1683ff;
@@ -132,21 +141,25 @@ body {
   transform: translateY(-3px);
 }
 header {
-  padding: 20px 40px;
+  padding: 18px 40px;
   background-color: #050b14;
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid #0b1422;
 }
 
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 nav > a:first-child img {
-  width: 70px;
+  width: 80px;
+  display: block;
 }
 
 nav ul {
@@ -158,26 +171,29 @@ nav ul {
 nav ul li a {
   text-decoration: none;
   color: #ffffff;
-  font-size: 16px;
-  transition: 0.3s;
+  font-size: 17px;
+  transition: color 0.3s ease;
+  display: inline-block;
 }
 
 nav ul li a:hover {
   color: #1683ff;
+  transform: translateY(-2px);
 }
 
 nav > a:last-child {
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #1683ff;
   color: #ffffff;
-  border-radius: 6px;
-  transition: 0.3s;
+  border-radius: 8px;
+ transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 nav > a:last-child:hover {
   background-color: #ffffff;
   color: #1683ff;
+  transform: translateY(-2px);
 }
 
 .about {
@@ -185,12 +201,13 @@ nav > a:last-child:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: left;
 }
-
 .about-text {
-  max-width: 600px;
+  max-width: 650px;
 }
 
 .about h2 {
@@ -203,6 +220,7 @@ nav > a:last-child:hover {
   font-size: 18px;
   line-height: 1.7;
   margin-bottom: 20px;
+  color: #b8c4d6;
 }
 
 .about a {
@@ -222,43 +240,245 @@ nav > a:last-child:hover {
 }
 
 .about-image img {
-  width: 280px;
+  width: 320px;
+  border-radius: 12px;
+}
+.why-us {
+  padding: 100px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.why-us h2 {
+  font-size: 40px;
+  color: #1683ff;
+  margin-bottom: 15px;
+}
+.why-us > p {
+  font-size: 18px;
+  color: #b8c4d6;
+  margin-bottom: 40px;
+}
+.why-us-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+.why-us-card {
+  padding: 30px 25px;
+  background-color: #0b1422;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+.why-us-card h3 {
+  font-size: 22px;
+  color: #1683ff;
+  margin-bottom: 15px;
+}
+
+.why-us-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #b8c4d6;
+}
+.why-us-card:hover {
+  transform: translateY(-8px);
+  border: 1px solid #1683ff;
+}
+.process {
+  padding: 100px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.process h2 {
+  font-size: 40px;
+  color: #1683ff;
+  margin-bottom: 15px;
+}
+
+.process > p {
+  font-size: 18px;
+  color: #b8c4d6;
+  margin-bottom: 40px;
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+.process-card {
+  padding: 30px 25px;
+  background-color: #0b1422;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+.process-card span {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1683ff;
+  margin-bottom: 15px;
+}
+.process-card h3 {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.process-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #b8c4d6;
+}
+.process-card:hover {
+  transform: translateY(-8px);
+  border: 1px solid #1683ff;
+}
+.testimonials {
+  padding: 100px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.testimonials h2 {
+  font-size: 40px;
+  color: #1683ff;
+  margin-bottom: 15px;
+}
+
+.testimonials > p {
+  font-size: 18px;
+  color: #b8c4d6;
+  margin-bottom: 40px;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+.testimonial-card {
+  padding: 30px;
+  background-color: #0b1422;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+.testimonial-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #b8c4d6;
+  margin-bottom: 20px;
+}
+.testimonial-card h3 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.testimonial-card span {
+  font-size: 14px;
+  color: #1683ff;
+}
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  border: 1px solid #1683ff;
+}
+.faq {
+  padding: 100px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.faq h2 {
+  font-size: 40px;
+  color: #1683ff;
+  margin-bottom: 15px;
+}
+
+.faq > p {
+  font-size: 18px;
+  color: #b8c4d6;
+  margin-bottom: 40px;
+}
+.faq-item {
+  margin-bottom: 15px;
+  text-align: left;
+  background-color: #0b1422;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+.faq-question {
+  width: 100%;
+  padding: 20px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.faq-answer {
+  display: none;
+  padding: 0 20px 20px;
+}
+.faq-answer.active {
+  display: block;
+}
+
+.faq-answer p {
+  color: #b8c4d6;
+  line-height: 1.7;
+}
+.faq-question:hover {
+  color: #1683ff;
 }
 .portfolio {
   padding: 100px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .portfolio h2 {
   font-size: 40px;
   color: #1683ff;
   margin-bottom: 15px;
+  text-align: center;
 }
 .portfolio > p {
   font-size: 18px;
   margin-bottom: 40px;
+  text-align: center;
+  color: #b8c4d6;
 }
 .portfolio-grid {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 .portfolio-card {
   flex: 1;
   background-color: #0b1422;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 12px;
   transition: transform 0.3s ease, border 0.3s ease;
   border: 1px solid transparent;
 }
 .portfolio-card img {
   width: 100%;
   border-radius: 8px;
+  display: block;
 }
 .portfolio-card h3 {
   color: #1683ff;
   margin-top: 20px;
 }
 .portfolio-card p {
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #b8c4d6;
 }
 .portfolio-card:hover{
   transform: translateY(-8px);
@@ -404,6 +624,50 @@ nav > a:last-child:hover {
   .contact button {
     width: 100%;
   }
+  .why-us {
+  padding: 70px 20px;
+}
+
+.why-us-grid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.process {
+  padding: 70px 20px;
+}
+
+.process-grid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.testimonials {
+  padding: 70px 20px;
+}
+
+.testimonials-grid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.faq {
+  padding: 70px 20px;
+}
+
+.faq h2 {
+  font-size: 32px;
+}
+
+.faq-question {
+  font-size: 16px;
+  padding: 18px;
+}
+.services-grid {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.service-card {
+  margin: 0;
+}
 }
 footer {
   padding: 30px 20px;

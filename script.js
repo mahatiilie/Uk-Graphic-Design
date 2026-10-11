@@ -29,3 +29,14 @@ form.addEventListener("submit", function (event) {
   alert("Form submitted!");
   form.reset();
 });
+const buttons = document.querySelectorAll(".faq-question");
+
+buttons.forEach(function (button) {
+  button.addEventListener("click", function () {
+  console.log("FAQ clicked");
+
+  const answer = button.parentElement.querySelector(".faq-answer");
+
+  answer.classList.toggle("active");
+  });
+});
