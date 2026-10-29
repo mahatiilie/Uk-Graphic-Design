@@ -25,9 +25,32 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  console.log(name, email, message);
-  alert("Form submitted!");
-  form.reset();
+ fetch("http://localhost:3000/contact", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message
+    })
+})
+.then(function (response) {
+    return response.json();
+})
+.then(function (data) {
+    if (data.success) {
+        alert("Your message was received!");
+        form.reset();
+    } else {
+        alert("Sorry, your message could not be sent.");
+    }
+})
+.catch(function (error) {
+    console.error("Error:", error);
+    alert("Could not connect to the server. Please try again.");
+});
 });
 const buttons = document.querySelectorAll(".faq-question");
 
@@ -37,6 +60,8 @@ buttons.forEach(function (button) {
 
   const answer = button.parentElement.querySelector(".faq-answer");
 
+
   answer.classList.toggle("active");
   });
 });
+
