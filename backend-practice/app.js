@@ -1,8 +1,6 @@
 
 const http = require("http");
-const fs = require("fs");
-const path = require("path");
-
+const { saveContact } = require("./database");
 const server = http.createServer((req, res) => {
         res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -103,23 +101,14 @@ if (
     return;
 }
 
-
-                const contact = {
-    name: data.name,
-    email: data.email,
-    message: data.message,
-    receivedAt: new Date().toISOString()
-};
-
-const filePath = path.join(__dirname, "contacts.jsonl");
-
-fs.appendFileSync(
-    filePath,
-    JSON.stringify(contact) + "\n",
-    "utf8"
+saveContact(
+    data.name.trim(),
+    data.email.trim(),
+    data.message.trim()
 );
 
-console.log("Contact message saved.");
+console.log("Contact message saved to database.");
+   
 
                 res.writeHead(200, {
                     "Content-Type": "application/json"

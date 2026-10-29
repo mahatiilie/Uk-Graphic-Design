@@ -1,0 +1,22 @@
+{
+  "name": "uk-graphic-design",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+ "scripts": {
+  "start": "node backend-practice/app.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahatiilie/Uk-Graphic-Design.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mahatiilie/Uk-Graphic-Design/issues"
+  },
+  "homepage": "https://github.com/mahatiilie/Uk-Graphic-Design#readme"
+}

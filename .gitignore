@@ -1,2 +1,7 @@
 .vscode/
 backend-practice/contacts.jsonl
+.env
+.env.*
+!.env.example
+backend-practice/contacts.db
+backend-practice/contacts.db-*
