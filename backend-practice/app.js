@@ -1,6 +1,6 @@
 
 const http = require("http");
-const { saveContact } = require("./database");
+const { saveContact, getContacts, loginAdmin } = require("./database");
 const server = http.createServer((req, res) => {
         res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -12,8 +12,20 @@ const server = http.createServer((req, res) => {
         return;
     }
     const pathname = new URL(req.url, "http://localhost:3000").pathname;
+    if (pathname === "/contacts" && req.method === "GET") {
 
-    if (pathname === "/contact" && req.method === "POST") {
+res.writeHead(401, {
+    "Content-Type": "application/json"
+});
+
+res.end(JSON.stringify({
+    message: "Unauthorized. Admin login required."
+}));
+
+return;
+
+} else if (pathname === "/contact" && req.method === "POST") {
+
        let body = "";
 let tooLarge = false;
 

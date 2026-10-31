@@ -5,3 +5,4 @@ backend-practice/contacts.jsonl
 !.env.example
 backend-practice/contacts.db
 backend-practice/contacts.db-*
+node_modules/
