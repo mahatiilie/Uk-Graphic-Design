@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | UK Graphic Design</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+
+    <header>
+        <h1>UK Graphic Design</h1>
+        <p>Admin Dashboard</p>
+    </header>
+
+    <main>
+        <h2>Welcome, Admin</h2>
+        <div class="dashboard-stats">
+
+    <div class="stat-card">
+        <h3>Total Messages</h3>
+        <p id="total-messages">0</p>
+    </div>
+
+</div>
+        <section>
+    <h3>Customer Messages</h3>
+    <section>
+    <div class="messages-header">
+        <h3>Customer Messages</h3>
+        <button id="refresh-button" type="button">Refresh Messages</button>
+    </div>
+
+    <p id="message-status">Loading messages...</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody id="contacts-list">
+        </tbody>
+    </table>
+</section>
+
+<button id="logout-button">Logout</button>
+    </main>
+    <script src="admin-dashboard.js"></script>
+
+</body>
+</html>

@@ -1,17 +1,32 @@
+
 const { loginAdmin } = require("./database");
+const readline = require("node:readline/promises");
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
 async function test() {
-    // Let's test the credentials we created
-    const username = "admin";
-    const password = "SecurePassword123!";
+    try {
+        const username = "Ayub Ciilley";
 
-    console.log(`Testing login for username: "${username}"...`);
-    const result = await loginAdmin(username, password);
-    
-    if (result) {
-        console.log("SUCCESS! Login function returned admin object:", result);
-    } else {
-        console.log("FAILED! loginAdmin returned null (username not found or password incorrect).");
+        const password = await rl.question(
+            "Enter your new admin password: "
+        );
+
+        const result = await loginAdmin(username, password);
+
+        if (result) {
+            console.log("SUCCESS! Admin authentication works.");
+            console.log("Username:", result.username);
+        } else {
+            console.log("FAILED! Password verification did not match.");
+        }
+    } catch (error) {
+        console.error("Login test error:", error.message);
+    } finally {
+        rl.close();
     }
 }
 

@@ -20,6 +20,17 @@ db.exec(`
     created_at TEXT DEFAULT CURRENT_TIMESTAMP
   )
 `);
+db.exec(`
+  CREATE TABLE IF NOT EXISTS replies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    contact_id INTEGER NOT NULL,
+    admin_id INTEGER NOT NULL,
+    reply_message TEXT NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (contact_id) REFERENCES contacts(id),
+    FOREIGN KEY (admin_id) REFERENCES admins(id)
+  )
+`);
 const insertContact = db.prepare(`
   INSERT INTO contacts (name, email, message)
   VALUES (?, ?, ?)
@@ -62,7 +73,23 @@ return {
     username: admin.username
 };
 }
+const insertReply = db.prepare(`
+  INSERT INTO replies (contact_id, admin_id, reply_message)
+  VALUES (?, ?, ?)
+`);
 
+function saveReply(contactId, adminId, replyMessage) {
+  return insertReply.run(contactId, adminId, replyMessage);
+}
+const findContactById = db.prepare(`
+    SELECT id, name, email, message
+    FROM contacts
+    WHERE id = ?
+`);
+
+function getContactById(contactId) {
+    return findContactById.get(contactId);
+}
 function getContacts() {
   return db.prepare(`
     SELECT id, name, email, message, created_at
@@ -74,5 +101,7 @@ module.exports = {
   saveContact,
   getContacts,
   createAdmin,
-  loginAdmin
+  loginAdmin,
+  saveReply,
+  getContactById
 };

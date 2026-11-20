@@ -6,3 +6,4 @@ backend-practice/contacts.jsonl
 backend-practice/contacts.db
 backend-practice/contacts.db-*
 node_modules/
+contacts-backup.db

@@ -1,12 +1,28 @@
+require("dotenv").config();
 const express = require("express");
+const nodemailer = require("nodemailer");
 const app = express();
+const path = require("path");
 const session = require("express-session");
-const { saveContact, getContacts, loginAdmin } = require("./database");
+const {
+    saveContact,
+    getContacts,
+    loginAdmin,
+    saveReply,
+    getContactById
+} = require("./database");
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
 
 // 1. Session Middleware
 app.use(
     session({
-        secret: "uk-graphic-design-super-secret-key-2026",
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
         cookie: {
@@ -20,12 +36,14 @@ app.use(
 // 2. Body Parser Middleware (Must be BEFORE routes)
 app.use(express.json({ limit: "10kb" }));
 
+
 // 3. CORS Middleware (Allow credentials so cookies/sessions can be sent back and forth)
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    res.setHeader("Access-Control-Allow-Credentials", "true"); // Crucial for sessions!
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+     // Crucial for sessions!
 
     if (req.method === "OPTIONS") {
         return res.sendStatus(204);
@@ -92,8 +110,89 @@ app.post("/admin/logout", (req, res) => {
     res.clearCookie("connect.sid");
     res.json({ success: true });
 });
+app.post("/admin/reply", async (req, res) => {
+    try {
+        // Check admin session
+        if (!req.session || !req.session.admin) {
+            return res.status(401).json({
+                success: false,
+                message: "Unauthorized"
+            });
+        }
 
-// Admin Login Route (Placed BEFORE app.listen)
+        const contactId = Number(req.body.contactId);
+        const replyMessage = req.body.replyMessage;
+
+        // Validate input
+        if (
+            !Number.isInteger(contactId) ||
+            contactId <= 0 ||
+            typeof replyMessage !== "string" ||
+            !replyMessage.trim()
+        ) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid reply information."
+            });
+        }
+
+        if (replyMessage.trim().length > 5000) {
+            return res.status(400).json({
+                success: false,
+                message: "Reply is too long."
+            });
+        }
+
+        // Find customer
+        const contact = getContactById(contactId);
+
+        if (!contact) {
+            return res.status(404).json({
+                success: false,
+                message: "Customer not found."
+            });
+        }
+
+        // Check Gmail configuration
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            return res.status(503).json({
+                success: false,
+                message: "Email service is not configured."
+            });
+        }
+
+        // Send email
+        await transporter.sendMail({
+            from: process.env.EMAIL_USER,
+            to: contact.email,
+            replyTo: process.env.EMAIL_USER,
+            subject: "Re: Your enquiry to UK Graphic Design",
+            text: replyMessage.trim()
+        });
+
+        // Save successful reply
+        saveReply(
+            contactId,
+            req.session.admin.id,
+            replyMessage.trim()
+        );
+
+        return res.json({
+            success: true,
+            message: "Reply sent successfully."
+        });
+
+    } catch (error) {
+        console.error("Reply error:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Unable to send email."
+        });
+    }
+});
+
+// Admin Login Route
 app.post("/admin/login", async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -132,6 +231,24 @@ app.post("/admin/login", async (req, res) => {
         });
     }
 });
+
+// Serve Admin Dashboard (Protected Route)
+app.get("/admin-dashboard.html", (req, res) => {
+    console.log(
+    "Dashboard access check:",
+    Boolean(req.session && req.session.admin)
+);
+
+    if (!req.session || !req.session.admin) {
+        return res.status(401).send("Unauthorized. Please login first.");
+    }
+
+    res.sendFile(path.join(__dirname, "public", "admin-dashboard.html"));
+
+});
+//serve frontend files from public folder
+app.use(express.static(path.join(__dirname, "public")));
+
 
 // 5. Start Server (Must be at the very bottom)
 app.listen(3000, () => {

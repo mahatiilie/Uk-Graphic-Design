@@ -1,0 +1,117 @@
+/* Reset browser default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Login page background */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #050b14, #142b49);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Login card */
+form {
+    background-color: #f1f5f9;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+/* Main login container */
+main {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Main heading */
+h1 {
+    color: #050b14;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+/* Description */
+main > p:first-of-type {
+    color: #64748b;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Form groups */
+form div {
+    margin-bottom: 22px;
+}
+
+/* Input labels */
+label {
+    display: block;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+/* Input fields */
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Input focus effect */
+input:focus {
+    border-color: #1683ff;
+    box-shadow: 0 0 0 3px rgba(22, 131, 255, 0.15);
+}
+/* Login button */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #1683ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #0866d1;
+    transform: translateY(-2px);
+}
+
+/* Button click effect */
+button:active {
+    transform: translateY(0);
+}
+
+/* Login message */
+#login-message {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #dc2626;
+}
