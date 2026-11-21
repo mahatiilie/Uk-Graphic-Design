@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,73 +7,221 @@
     <title>Admin Dashboard | UK Graphic Design</title>
     <link rel="stylesheet" href="admin-dashboard.css">
 </head>
+
 <body>
 
-    <header>
-        <h1>UK Graphic Design</h1>
-        <p>Admin Dashboard</p>
-    </header>
+    <div class="dashboard-layout">
 
-    <main>
-        <h2>Welcome, Admin</h2>
-        <div class="dashboard-stats">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
 
-    <div class="stat-card">
-        <h3>Total Messages</h3>
-        <p id="total-messages">0</p>
+            <div class="brand">
+                <h1><span>UK</span></h1>
+                <p>Graphic Design</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#top" class="nav-link active">
+                    <span class="nav-icon">▦</span>
+                    Dashboard
+                </a>
+
+                <a href="#messages" class="nav-link">
+                    <span class="nav-icon">✉</span>
+                    Messages
+                </a>
+
+                <a href="#reply-form" class="nav-link">
+                    <span class="nav-icon">↩</span>
+                    Replies
+                </a>
+            </nav>
+
+            <div class="sidebar-promo">
+                <div class="promo-icon">✦</div>
+                <h3>UK Graphic Design</h3>
+                <p>Turn Ideas Into Powerful Designs.</p>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="admin-avatar">A</div>
+                <div class="admin-info">
+                    <strong>Admin</strong>
+                    <span>Welcome back!</span>
+                </div>
+                <span class="online-dot"></span>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" id="top">
+
+            <!-- TOP HEADER -->
+            <header class="top-header">
+
+                <div>
+                    <h2>Admin Dashboard</h2>
+                    <p>Manage your customer messages and replies</p>
+                </div>
+
+                <div class="header-right">
+                    <span class="admin-label">UK Graphic Design</span>
+                    <button id="logout-button" class="logout-button" type="button">
+                        ↪ Logout
+                    </button>
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD CONTENT -->
+            <div class="dashboard-content">
+
+                <!-- STATISTICS -->
+                <section class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon blue-icon">✉</div>
+
+                        <div class="stat-info">
+                            <p>Total Messages</p>
+                            <h3 id="total-messages">0</h3>
+                            <span>All customer enquiries</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple-icon">↩</div>
+
+                        <div class="stat-info">
+                            <p>Customer Support</p>
+                            <h3>Active</h3>
+                            <span>Manage customer replies</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green-icon">✓</div>
+
+                        <div class="stat-info">
+                            <p>Email Service</p>
+                            <h3>Connected</h3>
+                            <span>Gmail SMTP configured</span>
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- CUSTOMER MESSAGES -->
+                <section class="content-card messages-section" id="messages">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h3>Customer Messages</h3>
+                            <p>View and respond to customer enquiries</p>
+                        </div>
+
+                        <button id="refresh-button" class="refresh-button" type="button">
+                            ↻ Refresh Messages
+                        </button>
+
+                    </div>
+
+                    <p id="message-status" class="message-status">
+                        Loading messages...
+                    </p>
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Message</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="contacts-list">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- REPLY FORM -->
+                <section id="reply-form" class="content-card reply-section"
+                    style="display: none;">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h3>Reply to Customer</h3>
+                            <p>Write and send an email response</p>
+                        </div>
+
+                        <div class="reply-icon">↩</div>
+
+                    </div>
+
+                    <div class="customer-selected">
+                        <span class="customer-icon">✉</span>
+                        <p id="reply-customer-email"></p>
+                    </div>
+
+                    <label for="reply-message">Your Message</label>
+
+                    <textarea
+                        id="reply-message"
+                        placeholder="Write your reply to the customer here..."
+                        rows="7">
+                    </textarea>
+
+                    <div class="reply-actions">
+
+                        <button
+                            id="send-reply-button"
+                            class="send-button"
+                            type="button">
+                            ➤ Send Reply
+                        </button>
+
+                        <button
+                            id="cancel-reply-button"
+                            class="cancel-button"
+                            type="button">
+                            Cancel
+                        </button>
+
+                    </div>
+
+                    <p id="reply-status" class="reply-status"></p>
+
+                </section>
+
+
+                <!-- FOOTER -->
+                <footer class="dashboard-footer">
+                    <p>© 2026 UK Graphic Design. Admin Dashboard.</p>
+                    <span>Designed for creative business management.</span>
+                </footer>
+
+            </div>
+
+        </main>
+
     </div>
 
-</div>
-<section>
-    <div class="messages-header">
-        <h3>Customer Messages</h3>
-        <button id="refresh-button" type="button">Refresh Messages</button>
-    </div>
-
-    <p id="message-status">Loading messages...</p>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Message</th>
-                <th>Date</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-
-        <tbody id="contacts-list">
-        </tbody>
-    </table>
-   
- <div id="reply-form" style="display: none;">
-
-    <h3>Reply to Customer</h3>
-
-    <p id="reply-customer-email"></p>
-
-    <textarea
-        id="reply-message"
-        placeholder="Write your reply here..."
-        rows="6">
-    </textarea>
-
-    <button id="send-reply-button">
-        Send Reply
-    </button>
-
-    <button id="cancel-reply-button">
-        Cancel
-    </button>
-
-    <p id="reply-status"></p>
-
- </div>
-</section>
-
-<button id="logout-button">Logout</button>
-    </main>
     <script src="admin-dashboard.js"></script>
 
 </body>
