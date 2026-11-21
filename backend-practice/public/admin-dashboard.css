@@ -182,3 +182,53 @@ td {
         width: 100%;
     }
 }
+/* Reply Form */
+#reply-form {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #f8fafc;
+    border: 1px solid #dbe3ef;
+    border-radius: 10px;
+}
+
+#reply-form h3 {
+    color: #0b1424;
+    margin-bottom: 15px;
+}
+
+#reply-customer-email {
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+#reply-message {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+#send-reply-button,
+#cancel-reply-button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#send-reply-button {
+    background-color: #1683ff;
+    color: white;
+}
+
+#cancel-reply-button {
+    background-color: #e2e8f0;
+    color: #334155;
+    margin-left: 8px;
+}

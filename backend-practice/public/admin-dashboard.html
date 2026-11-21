@@ -23,9 +23,7 @@
     </div>
 
 </div>
-        <section>
-    <h3>Customer Messages</h3>
-    <section>
+<section>
     <div class="messages-header">
         <h3>Customer Messages</h3>
         <button id="refresh-button" type="button">Refresh Messages</button>
@@ -40,12 +38,37 @@
                 <th>Email</th>
                 <th>Message</th>
                 <th>Date</th>
+                <th>Action</th>
             </tr>
         </thead>
 
         <tbody id="contacts-list">
         </tbody>
     </table>
+   
+ <div id="reply-form" style="display: none;">
+
+    <h3>Reply to Customer</h3>
+
+    <p id="reply-customer-email"></p>
+
+    <textarea
+        id="reply-message"
+        placeholder="Write your reply here..."
+        rows="6">
+    </textarea>
+
+    <button id="send-reply-button">
+        Send Reply
+    </button>
+
+    <button id="cancel-reply-button">
+        Cancel
+    </button>
+
+    <p id="reply-status"></p>
+
+ </div>
 </section>
 
 <button id="logout-button">Logout</button>
