@@ -3,6 +3,29 @@ const path = require('node:path');
 const argon2 = require('argon2');
 const dbPath = path.join(__dirname, 'contacts.db');
 const db = new DatabaseSync(dbPath);
+db.exec('PRAGMA foreign_keys = ON');
+db.exec(`
+  CREATE TABLE IF NOT EXISTS portfolio_projects (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    category TEXT NOT NULL,
+    is_published INTEGER NOT NULL DEFAULT 0
+      CHECK (is_published IN (0, 1)),
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+  )
+`);
+db.exec(`
+  CREATE TABLE IF NOT EXISTS portfolio_images (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    project_id INTEGER NOT NULL,
+    image_path TEXT NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id)
+      REFERENCES portfolio_projects(id)
+      ON DELETE CASCADE
+  )
+`);
 db.exec(`
   CREATE TABLE IF NOT EXISTS contacts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -97,11 +120,56 @@ function getContacts() {
     ORDER BY id DESC
   `).all();
 }
+const insertPortfolioProject = db.prepare(`
+  INSERT INTO portfolio_projects (title, description, category)
+  VALUES (?, ?, ?)
+`);
+function createPortfolioProject(title, description, category) {
+  return insertPortfolioProject.run(title, description, category);
+}
+const insertPortfolioImage = db.prepare(`
+  INSERT INTO portfolio_images (project_id, image_path)
+  VALUES (?, ?)
+`);
+function addPortfolioImage(projectId, imagePath) {
+  return insertPortfolioImage.run(projectId, imagePath);
+}
+const getAllPortfolioProjects = db.prepare(`
+  SELECT *
+  FROM portfolio_projects
+  ORDER BY id DESC
+`);
+function getPortfolioProjects() {
+  return getAllPortfolioProjects.all();
+}
+const getPublishedPortfolioProjects = db.prepare(`
+  SELECT *
+  FROM portfolio_projects
+  WHERE is_published = 1
+  ORDER BY id DESC
+`);
+function getPublishedProjects() {
+  return getPublishedPortfolioProjects.all();
+}
+const getPortfolioImages = db.prepare(`
+  SELECT *
+  FROM portfolio_images
+  WHERE project_id = ?
+  ORDER BY id ASC
+`);
+function getPortfolioImagesByProject(projectId) {
+  return getPortfolioImages.all(projectId);
+}
 module.exports = {
   saveContact,
   getContacts,
   createAdmin,
   loginAdmin,
   saveReply,
-  getContactById
+  getContactById,
+  createPortfolioProject,
+  addPortfolioImage,
+  getPortfolioProjects,
+  getPublishedProjects,
+  getPortfolioImagesByProject
 };
